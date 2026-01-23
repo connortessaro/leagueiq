@@ -50,7 +50,7 @@ def build_match_report(rules: list[RuleType], isWin: bool) -> str:
         report_lines.append("")
 
     overall = overall_severity(rules_sorted)
-    report_lines.append(f"Overall Impact Level: {overall}")
+    report_lines.append(f"Overall Impact on Match Outcome: {overall}")
 
     return "\n".join(report_lines)
 

@@ -30,6 +30,7 @@ def main():
     # ingest events and then features
 
     while True:
+        print(f"Displaying match {index + 1} of {len(match_ids)}")
         match_id = match_ids[index]
         build_features(match_id, puuid)
 

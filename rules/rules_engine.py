@@ -382,17 +382,23 @@ def vision_check(features: list[dict]) -> list[RuleType]:
                     message="Player had good vision score per minute.",
                     severity=2,
                 )
-            elif vspm >= 0.8:
+            elif vspm >= 0.6:
                 rule = RuleType(
                     rule_name="Average Vision Control",
                     message="Player had average vision score per minute.",
                     severity=3,
                 )
-            else:
+            elif vspm >= 0.4:
                 rule = RuleType(
                     rule_name="Poor Vision Control",
                     message="Player had poor vision score per minute.",
                     severity=4,
+                )
+            else:
+                rule = RuleType(
+                    rule_name="Very Poor Vision Control",
+                    message="Player had very poor vision score per minute.",
+                    severity=5,
                 )
             triggered_rules.append(rule)
     return triggered_rules

@@ -14,11 +14,9 @@ def get_participant_id(match: dict, puuid: str) -> str | None:
 def format_match_events(timeline: dict, participant_id: int, puuid: str) -> list[dict]:
 
     events_list = []
-    counter = Counter()
     for frame in timeline["info"]["frames"]:
         events = frame["events"] 
         for event in events:    
-            counter[event["type"]] += 1
             event_type = None
             if event["type"] == "CHAMPION_KILL":
                 if event["timestamp"] < 600000 and event["victimId"] == participant_id:
@@ -47,7 +45,6 @@ def format_match_events(timeline: dict, participant_id: int, puuid: str) -> list
                     "puuid": puuid
                 }
             )
-    print(f"total events processed: {counter}")
     return events_list
 
 
